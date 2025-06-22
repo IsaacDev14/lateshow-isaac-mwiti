@@ -1,3 +1,4 @@
+
 # Late Show API
 
 A Flask RESTful API for managing Late Show episodes, guests, and their appearances. Built during Phase 4 Code Challenge.
@@ -13,10 +14,11 @@ lateshow-isaac-mwiti/
 │   ├── models.py          # SQLAlchemy models: Episode, Guest, Appearance
 │   ├── routes.py          # API routes (GET, POST, DELETE)
 │   ├── seed.py            # Seed script with sample data
-│   └── migrations/        # Alembic migrations
 ├── config.py              # App configuration
 ├── run.py                 # Entry point (optional)
 ├── requirements.txt       # Dependencies
+├── migrations/            # Alembic migrations
+├── .flaskenv              # Flask CLI environment variables
 └── README.md              # Project documentation
 ```
 
@@ -48,13 +50,40 @@ flask db upgrade
 python -m app.seed
 ```
 
+### Optional: Use a `.flaskenv` file
+
+Create a `.flaskenv` file to simplify Flask CLI commands:
+
+```
+FLASK_APP=app
+FLASK_RUN_PORT=5555
+```
+
+Then you can just run:
+
+```bash
+flask run
+```
+
+---
+
+## 🌐 Base URL
+
+All requests should be made to:
+
+```
+http://127.0.0.1:5555
+```
+
 ---
 
 ## 📌 API Endpoints
 
-### 🔹 GET /episodes
+### 🔹 GET `/episodes`
 
 Returns a list of all episodes (short form):
+
+**Example:** `GET http://127.0.0.1:5555/episodes`
 
 ```json
 [
@@ -68,9 +97,11 @@ Returns a list of all episodes (short form):
 
 ---
 
-### 🔹 GET /episodes/<id>
+### 🔹 GET `/episodes/<id>`
 
 Returns an episode and its appearances:
+
+**Example:** `GET http://127.0.0.1:5555/episodes/1`
 
 ```json
 {
@@ -108,7 +139,7 @@ If not found:
 
 ---
 
-### 🔹 DELETE /episodes/<id>
+### 🔹 DELETE `/episodes/<id>`
 
 Deletes an episode and all its appearances.
 
@@ -128,9 +159,11 @@ Or:
 
 ---
 
-### 🔹 GET /guests
+### 🔹 GET `/guests`
 
 Returns all guests:
+
+**Example:** `GET http://127.0.0.1:5555/guests`
 
 ```json
 [
@@ -144,9 +177,11 @@ Returns all guests:
 
 ---
 
-### 🔹 POST /appearances
+### 🔹 POST `/appearances`
 
 Creates a new appearance:
+
+**Example:** `POST http://127.0.0.1:5555/appearances`
 
 **Request Body:**
 
@@ -206,4 +241,3 @@ Creates a new appearance:
 GitHub: [@isaacmwiti](https://github.com/isaacmwiti)
 
 ---
-
