@@ -1,10 +1,7 @@
 # app/models.py
 
-from flask_sqlalchemy import SQLAlchemy
+from app import db
 from sqlalchemy.orm import validates
-from datetime import datetime
-
-db = SQLAlchemy()
 
 # Association Table: Appearance
 class Appearance(db.Model):
